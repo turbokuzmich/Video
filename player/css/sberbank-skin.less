@@ -345,6 +345,89 @@
 			}
 		}
 	}
+
+	.menu-container {
+		background: url(../images/skin/menu-bg.jpg) -2px -2px no-repeat;
+		position: absolute;
+		bottom: 145px;
+	    left: 50px;
+	    position: absolute;
+	    right: 50px;
+	    top: 20px;
+	    padding: 20px;
+	    .border-radius(10px);
+
+	    header {
+	    	background: url(../images/skin/menu-header-bg.gif) 50% 50% repeat-x;
+	    	text-transform: uppercase;
+	    	font-size: 26px; font-weight: bold;
+	    	color: white;
+	    	line-height: 26px;
+	    	text-align: center;
+	    	text-shadow: 0 0 8px #009CFF;
+	    }
+
+	    .menu-scroll {
+			position: absolute;
+			left: 20px; top: 85px; right: 20px; bottom: 62px;
+			overflow: hidden;
+	    }
+
+	    .menu {
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+			width: 500px;
+
+			li {
+				display: block;
+				font-size: 18px; line-height: 20px;
+				color: #d1f4ff;
+				margin-bottom: 0;
+				background-color: transparent;
+				background-position: 5px 10px;
+				background-repeat: no-repeat;
+				padding: 7px 20px 5px 25px;
+				cursor: pointer;
+				.transition(background-color .2s ease-out);
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+				&:hover {
+					background-color: #356776;
+				}
+
+				&.m-playing {
+					background-image: url(../images/skin/menu-playing.gif);
+				}
+			}
+	    }
+
+	    .menu-arrow {
+	    	display: block;
+		    height: 58px;
+		    left: 50%;
+		    margin-left: -35px;
+		    position: absolute;
+		    width: 71px;
+		    color: transparent;
+		    background-position: 0 0;
+			
+			&.m-up {
+		    	top: 40px;
+				background-image: url(../images/skin/button-menu-up.png);
+			}
+			&.m-down {
+		    	bottom: 0;
+				background-image: url(../images/skin/button-menu-down.png);
+			}
+
+			&:hover {
+				background-position: -71px 0;
+			}
+	    }
+	}
 }
 
 
@@ -356,6 +439,28 @@
 		.vjs-fullscreen-control {
 			top: 83px;
 			right: 64px;
+		}
+	}
+	.player-peripherals {
+		.menu-container {
+			.menu {
+				li {
+					&.m-playing {
+						background-image: url(../images/skin/menu-playing@2x.gif);
+						background-size: 10px 13px;
+					}
+				}
+			}
+			.menu-arrow {
+				&.m-up {
+					background-image: url(../images/skin/button-menu-up@2x.png);
+					background-size: 142px 58px;
+				}
+				&.m-down {
+					background-image: url(../images/skin/button-menu-down@2x.png);
+					background-size: 142px 58px;
+				}
+			}
 		}
 	}
 }
@@ -431,6 +536,10 @@
 					}
 				}
 			}
+		}
+		.menu-container {
+			background-image: url(../images/skin/menu-bg@2x.jpg);
+			background-size: 1024px 767px;
 		}
 	}
 }

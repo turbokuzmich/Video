@@ -1,11 +1,15 @@
 (function($) {
 
 	var Base = Backbone.Model.extend({
-		'fire': function() {
-			$(document).trigger.apply(this, arguments);
+		'fire': function(event, args) {
+			$(document).trigger(event, arguments);
 		},
 		'listen': function(event, cb) {
-			$(document).on(event, cb);
+			var that = this;
+
+			$(document).on(event, function(event, event_name, data) {
+				cb.call(that, event, data);
+			});
 		}
 	});
 
