@@ -1412,7 +1412,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 @media screen and (device-width: 768px) and (device-height: 1024px) {
   .vjs-default-skin .vjs-fullscreen-control {
     top: 83px;
-    right: 76px;
+    right: 64px;
   }
 }
 @media all and (device-width: 768px) and (device-height: 1024px) and (orientation: landscape) {
