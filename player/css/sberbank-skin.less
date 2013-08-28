@@ -62,10 +62,14 @@
 			}
 		}
 		.vjs-current-time {
-			right: 753px;
+			left: 156px;
+		    text-align: right;
+		    width: 40px;
 		}
 		.vjs-duration {
-			left: 753px;
+			right: 156px;
+		    text-align: left;
+		    width: 40px;
 			color: #657d8e;
 		}
 		.vjs-time-divider {
@@ -217,7 +221,7 @@
 		float: none;
 		height: 42px;
 		position: absolute;
-		right: 123px;
+		right: 111px;
     	top: 83px;
 		width: 41px;
 
@@ -236,7 +240,7 @@
 		float: none;
 		height: 42px;
 		position: absolute;
-		left: 123px;
+		left: 111px;
     	top: 83px;
 		width: 41px;
 
@@ -261,6 +265,7 @@
 
 .player-peripherals {
 	position: relative;
+	height: 100%;
 
 	.top-panel-container {
 		position: absolute;
@@ -345,7 +350,7 @@
 
 
 
-// all mobile devices
+// ipad
 @media screen and (device-width: 768px) and (device-height: 1024px) {
 	.vjs-default-skin {
 		.vjs-fullscreen-control {
@@ -353,6 +358,11 @@
 			right: 76px;
 		}
 	}
+}
+
+// landscape
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {
+
 }
 
 // retina

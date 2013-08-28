@@ -1047,10 +1047,14 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   display: none;
 }
 .vjs-default-skin .vjs-control-bar .vjs-current-time {
-  right: 753px;
+  left: 156px;
+  text-align: right;
+  width: 40px;
 }
 .vjs-default-skin .vjs-control-bar .vjs-duration {
-  left: 753px;
+  right: 156px;
+  text-align: left;
+  width: 40px;
   color: #657d8e;
 }
 .vjs-default-skin .vjs-control-bar .vjs-time-divider {
@@ -1268,7 +1272,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   float: none;
   height: 42px;
   position: absolute;
-  right: 123px;
+  right: 111px;
   top: 83px;
   width: 41px;
 }
@@ -1286,7 +1290,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   float: none;
   height: 42px;
   position: absolute;
-  left: 123px;
+  left: 111px;
   top: 83px;
   width: 41px;
 }
@@ -1306,6 +1310,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 }
 .player-peripherals {
   position: relative;
+  height: 100%;
 }
 .player-peripherals .top-panel-container {
   position: absolute;
@@ -1410,6 +1415,9 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
     right: 76px;
   }
 }
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation: landscape) {
+  
+}
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .vjs-default-skin .vjs-fullscreen-control {
     background-image: url(../images/skin/button-fullscreen@2x.png);
@@ -1466,5 +1474,16 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 }
 .wrap {
   width: 960px;
+  height: 540px;
   margin: 0 auto;
+}
+@media all and (device-width: 768px) and (device-height: 1024px) {
+  html,
+  body {
+    height: 100%;
+  }
+  .wrap {
+    width: 100%;
+    height: 100%;
+  }
 }
