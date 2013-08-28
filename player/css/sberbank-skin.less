@@ -1,0 +1,426 @@
+@controlBarHeight: 134px;
+@trackBackgroundColor: #657d8e;
+@fontColor: #0891d8;
+@volumeControlLength: 83px;
+
+.video-js {
+	.vjs-tech {
+	}
+}
+
+.vjs-default-skin {
+	.vjs-control-bar {
+		display: block;
+		height: @controlBarHeight;
+		background-color: transparent;
+		.transition(none);
+
+		.vjs-control-bar-left, .vjs-control-bar-right, .vjs-control-bar-center {
+			position: absolute;
+			height: @controlBarHeight;
+		}
+		.vjs-control-bar-left {
+			background: url(../images/skin/control-panel-left.png) 0 50% no-repeat;
+			left: 0; top: 0; bottom: 0;
+			width: 173px;
+		}
+		.vjs-control-bar-center {
+			background: url(../images/skin/control-panel-center.png) 50% 100% repeat-x;
+			left: 173px; right: 172px; bottom: 0;
+		}
+		.vjs-control-bar-right {
+			background: url(../images/skin/control-panel-right.png) 100% 50% no-repeat;
+			top: 0; right: 0; bottom: 0;
+			width: 172px;
+		}
+		.vjs-progress-control {
+			position: absolute;
+			left: 200px; right: 200px; top: 97px;
+			font-size: 0;
+			height: 15px;
+			background-color: @trackBackgroundColor;
+			.transition(none);
+			.border-radius(7px);
+
+			&:before {
+				display: none;
+			}
+		}
+		.vjs-load-progress {
+			display: none;
+		}
+		.vjs-current-time, .vjs-duration, .vjs-time-controls {
+			font-family: 'PT Sans',sans-serif;
+			font-size: 12px;
+			color: @fontColor;
+			float: none;
+			position: absolute;
+    		top: 87px;
+
+			.vjs-control-text {
+				display: none;
+			}
+		}
+		.vjs-current-time {
+			right: 753px;
+		}
+		.vjs-duration {
+			left: 753px;
+			color: #657d8e;
+		}
+		.vjs-time-divider {
+			display: none;
+		}
+		.vjs-slider {
+			background-color: transparent;
+		}
+		.vjs-load-progress {
+			background-color: transparent;
+		}
+		.vjs-play-progress {
+			background: #65a6d5; /* Old browsers */
+			background: -moz-linear-gradient(top,  #65a6d5 0%, #4cd1f0 50%, #3cbfe5 50%, #2868ad 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65a6d5), color-stop(50%,#4cd1f0), color-stop(50%,#3cbfe5), color-stop(100%,#2868ad)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#65a6d5', endColorstr='#2868ad',GradientType=0 ); /* IE6-9 */
+			.border-radius(7px);
+			.box-shadow(0 0 21px #00D8FF);
+		}
+	}
+	.vjs-big-play-button {
+		display: none;
+	}
+	.vjs-seek-handle {
+		display: block;
+		width: 13px; height: 13px;
+		border: solid 1px #66889d;
+		#gradient > .vertical(#e9edf2, #b4c2d3);
+		.border-radius(50%);
+		.box-shadow(0 0 15px #fff);
+	}
+	.vjs-play-control {
+		width: 77px; height: 78px;
+		left: 16px; top: 46px;
+		background: url(../images/skin/button-play.png) 0 0 no-repeat;
+
+		.vjs-control-content {
+			display: none;
+		}
+
+		&:before {
+			display: none;
+		}
+		&.vjs-playing {
+			background-position: 0 100%;
+
+			&:hover {
+				background-position: -77px 100%;
+			}
+			&:active {
+				background-position: -154px 100%;
+			}
+		}
+		&:hover {
+			background-position: -77px 0;
+		}
+		&:active {
+			background-position: -154px 0;
+		}
+	}
+	.vjs-volume-control {
+		width: @volumeControlLength;
+		font-size: 0;
+		height: 15px;
+		background-color: @trackBackgroundColor;
+		top: 97px;
+		right: 4px;
+		float: none;
+		position: absolute;
+		.border-radius(7px);
+	}
+	.vjs-volume-bar {
+		margin: 0;
+		width: @volumeControlLength;
+		height: 15px;
+
+		.vjs-volume-handle {
+			display: block;
+			width: 13px; height: 13px;
+			border: solid 1px #66889d;
+			#gradient > .vertical(#e9edf2, #b4c2d3);
+			.border-radius(50%);
+			.box-shadow(0 0 15px #fff);
+		}
+	}
+	.vjs-volume-level {
+		background: #65a6d5; /* Old browsers */
+		background: -moz-linear-gradient(top,  #65a6d5 0%, #4cd1f0 50%, #3cbfe5 50%, #2868ad 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#65a6d5), color-stop(50%,#4cd1f0), color-stop(50%,#3cbfe5), color-stop(100%,#2868ad)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* IE10+ */
+		background: linear-gradient(to bottom,  #65a6d5 0%,#4cd1f0 50%,#3cbfe5 50%,#2868ad 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#65a6d5', endColorstr='#2868ad',GradientType=0 ); /* IE6-9 */
+		height: 15px;
+		.border-radius(7px);
+		.box-shadow(0 0 21px #00D8FF);
+	}
+	.vjs-mute-control {
+		float: none;
+	    height: 22px;
+	    position: absolute;
+	    right: 32px;
+	    top: 71px;
+	    width: 27px;
+		background: url(../images/skin/button-mute.png) 50% 0 no-repeat;
+
+		&:before {
+			display: none;
+		}
+		&.vjs-vol-3 {
+			background-position: 50% 0;
+		}
+		&.vjs-vol-2 {
+			background-position: 50% -22px;
+		}
+		&.vjs-vol-1 {
+			background-position: 50% -44px;
+		}
+		&.vjs-vol-0 {
+			background-position: 50% -66px;
+		}
+	}
+	.vjs-fullscreen-control {
+		background: url(../images/skin/button-fullscreen.png) 0 50% no-repeat;
+		float: none;
+		height: 42px;
+		position: absolute;
+		right: 63px;
+		top: 48px;
+		width: 41px;
+
+		&:before {
+			display: none;
+		}
+		&:hover {
+			background-position: -41px 50%;
+		}
+		&:active {
+			background-position: -82px 50%;
+		}
+	}
+	.vjs-next-control {
+		background: url(../images/skin/button-next.png) 0 50% no-repeat;
+		float: none;
+		height: 42px;
+		position: absolute;
+		right: 123px;
+    	top: 83px;
+		width: 41px;
+
+		&:before {
+			display: none;
+		}
+		&:hover {
+			background-position: -41px 50%;
+		}
+		&:active {
+			background-position: -82px 50%;
+		}
+	}
+	.vjs-prev-control {
+		background: url(../images/skin/button-prev.png) 0 50% no-repeat;
+		float: none;
+		height: 42px;
+		position: absolute;
+		left: 123px;
+    	top: 83px;
+		width: 41px;
+
+		&:before {
+			display: none;
+		}
+		&:hover {
+			background-position: -41px 50%;
+		}
+		&:active {
+			background-position: -82px 50%;
+		}
+	}
+
+	&.vjs-default-skin.vjs-has-started.vjs-user-inactive.vjs-playing {
+		.vjs-control-bar {
+			.opacity(100);
+			visibility: visible;
+		}
+	}
+}
+
+.player-peripherals {
+	position: relative;
+
+	.top-panel-container {
+		position: absolute;
+		left: 0; right: 0; bottom: 100%;
+		width: 100%; height: 100%;
+		z-index: 1;
+		.transition(bottom .8s cubic-bezier(0.180, 0.580, 0.125, 1.170));
+
+		&.m-open {
+			.transition(bottom .8s cubic-bezier(0.085, 0.435, 0.120, 1.000));
+			bottom: 130px;
+		}
+
+		.top-panel {
+			position: absolute;
+			left: 0; top: @topPanelUpTop; right: 0;
+			height: 100%;
+
+			.pull {
+				position: absolute;
+				left: 0; bottom: 0; right: 0;
+				height: @pullHeight;
+				cursor: pointer;
+
+				.pull-left, .pull-center, .pull-right, .puller {
+					position: absolute;
+					top: 0;
+					height: @pullHeight;
+				}
+
+				.pull-left {
+					left: 0;
+					width: 173px;
+					background: url(../images/skin/top-panel-left.png) 0 100% no-repeat;
+				}
+				.pull-right {
+					right: 0;
+					width: 172px;
+					background: url(../images/skin/top-panel-right.png);
+				}
+				.pull-center {
+					left: 173px; right: 172px;
+					background: url(../images/skin/top-panel-center.png) 50% 0 repeat-x;
+				}
+				.puller {
+					left: 50%; top: 53px;
+					width: 28px; height: 15px;
+					margin-left: -14px;
+					background: url(../images/skin/puller.png);
+				}
+			}
+
+			.content {
+				position: absolute;
+				left: 0; top: 0; right: 0; bottom: @pullHeight;
+
+				.content-left, .content-center, .content-right {
+					position: absolute;
+					top: 0;
+					height: 100%;
+				}
+
+				.content-left {
+					left: 0;
+					width: 173px;
+					background: url(../images/skin/top-panel-content-left.png) 0 50% repeat-y;
+				}
+				.content-center {
+					left: 173px; right: 171px;
+					background-color: #eaeaec;
+				}
+				.content-right {
+					right: 0;
+					width: 171px;
+					background: url(../images/skin/top-panel-content-right.png) 100% 50% repeat-y;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+// all mobile devices
+@media screen and (device-width: 768px) and (device-height: 1024px) {
+	.vjs-default-skin {
+		.vjs-fullscreen-control {
+			top: 83px;
+			right: 76px;
+		}
+	}
+}
+
+// retina
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	.vjs-default-skin {
+		.vjs-fullscreen-control {
+			background-image: url(../images/skin/button-fullscreen@2x.png);
+			background-size: 123px 42px;
+		}
+		.vjs-next-control {
+			background-image: url(../images/skin/button-next@2x.png);
+			background-size: 123px 42px;
+		}
+		.vjs-prev-control {
+			background-image: url(../images/skin/button-prev@2x.png);
+			background-size: 123px 42px;
+		}
+		.vjs-play-control {
+			background-image: url(../images/skin/button-play@2x.png);
+			background-size: 231px 156px;
+		}
+		.vjs-control-bar {
+			.vjs-control-bar-left {
+				background-image: url(../images/skin/control-panel-left@2x.png);
+				background-size: 173px 134px;
+			}
+			.vjs-control-bar-right {
+				background-image: url(../images/skin/control-panel-right@2x.png);
+				background-size: 172px 134px;
+			}
+			.vjs-control-bar-center {
+				background-image: url(../images/skin/control-panel-center@2x.png);
+				background-size: 680px 82px;
+			}
+		}
+	}
+	.player-peripherals {
+		.top-panel-container {
+			.top-panel {
+				.pull {
+					.pull-left {
+						background-image: url(../images/skin/top-panel-left@2x.png);
+						background-size: 173px 166px;
+					}
+					.pull-center {
+						background-image: url(../images/skin/top-panel-center@2x.png);
+						background-size: 680px 95px;
+					}
+					.pull-right {
+						background-image: url(../images/skin/top-panel-right@2x.png);
+						background-size: 172px 166px;
+					}
+					.puller {
+						background-image: url(../images/skin/puller@2x.png);
+						background-size: 28px 15px;
+					}
+				}
+				.content {
+					.content-left {
+						background-image: url(../images/skin/top-panel-content-left@2x.png);
+						background-size: 173px 1px;
+					}
+					.content-right {
+						background-image: url(../images/skin/top-panel-content-right@2x.png);
+						background-size: 171px 1px;
+					}
+				}
+			}
+		}
+	}
+}

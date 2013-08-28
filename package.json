@@ -1,0 +1,9 @@
+{
+	"name": "video-player",
+	"version": "0.0.1",
+	"description": "Непростой видеоплеер для Сбербанка",
+	"main": "server.js",
+	"dependencies": {
+		"connect": "2.8.5"
+	}
+}
