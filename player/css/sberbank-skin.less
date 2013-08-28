@@ -272,10 +272,10 @@
 		left: 0; right: 0; bottom: 100%;
 		width: 100%; height: 100%;
 		z-index: 1;
-		.transition(bottom .8s cubic-bezier(0.180, 0.580, 0.125, 1.170));
+		.transition(bottom .4s cubic-bezier(0.180, 0.580, 0.125, 1.170));
 
 		&.m-open {
-			.transition(bottom .8s cubic-bezier(0.085, 0.435, 0.120, 1.000));
+			.transition(bottom .4s cubic-bezier(0.085, 0.435, 0.120, 1.000));
 			bottom: 130px;
 		}
 
@@ -324,8 +324,7 @@
 
 				.content-left, .content-center, .content-right {
 					position: absolute;
-					top: 0;
-					height: 100%;
+					top: -400px; bottom: 0;
 				}
 
 				.content-left {
@@ -442,6 +441,13 @@
 		}
 	}
 	.player-peripherals {
+		.top-panel-container {
+			.transition(none);
+
+			&.m-open {
+				.transition(none);
+			}
+		}
 		.menu-container {
 			.menu {
 				li {

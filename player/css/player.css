@@ -1321,17 +1321,17 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   height: 100%;
   z-index: 1;
   /* transition */
-  -webkit-transition: bottom 0.8s cubic-bezier(0.18, 0.58, 0.125, 1.17);
-  -moz-transition: bottom 0.8s cubic-bezier(0.18, 0.58, 0.125, 1.17);
-  -o-transition: bottom 0.8s cubic-bezier(0.18, 0.58, 0.125, 1.17);
-  transition: bottom 0.8s cubic-bezier(0.18, 0.58, 0.125, 1.17);
+  -webkit-transition: bottom 0.4s cubic-bezier(0.18, 0.58, 0.125, 1.17);
+  -moz-transition: bottom 0.4s cubic-bezier(0.18, 0.58, 0.125, 1.17);
+  -o-transition: bottom 0.4s cubic-bezier(0.18, 0.58, 0.125, 1.17);
+  transition: bottom 0.4s cubic-bezier(0.18, 0.58, 0.125, 1.17);
 }
 .player-peripherals .top-panel-container.m-open {
   /* transition */
-  -webkit-transition: bottom 0.8s cubic-bezier(0.085, 0.435, 0.12, 1);
-  -moz-transition: bottom 0.8s cubic-bezier(0.085, 0.435, 0.12, 1);
-  -o-transition: bottom 0.8s cubic-bezier(0.085, 0.435, 0.12, 1);
-  transition: bottom 0.8s cubic-bezier(0.085, 0.435, 0.12, 1);
+  -webkit-transition: bottom 0.4s cubic-bezier(0.085, 0.435, 0.12, 1);
+  -moz-transition: bottom 0.4s cubic-bezier(0.085, 0.435, 0.12, 1);
+  -o-transition: bottom 0.4s cubic-bezier(0.085, 0.435, 0.12, 1);
+  transition: bottom 0.4s cubic-bezier(0.085, 0.435, 0.12, 1);
   bottom: 130px;
 }
 .player-peripherals .top-panel-container .top-panel {
@@ -1391,8 +1391,8 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 .player-peripherals .top-panel-container .top-panel .content .content-center,
 .player-peripherals .top-panel-container .top-panel .content .content-right {
   position: absolute;
-  top: 0;
-  height: 100%;
+  top: -400px;
+  bottom: 0;
 }
 .player-peripherals .top-panel-container .top-panel .content .content-left {
   left: 0;
@@ -1497,6 +1497,20 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   .vjs-default-skin .vjs-fullscreen-control {
     top: 83px;
     right: 64px;
+  }
+  .player-peripherals .top-panel-container {
+    /* transition */
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  .player-peripherals .top-panel-container.m-open {
+    /* transition */
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
   }
   .player-peripherals .menu-container .menu li.m-playing {
     background-image: url(../images/skin/menu-playing@2x.gif);

@@ -4,7 +4,8 @@
 		'defaults': {
 			'selectors': {
 				'player': '.player'
-			}
+			},
+			'videos': []
 		},
 
 		'initialize': function() {

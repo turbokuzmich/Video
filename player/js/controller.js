@@ -13,4 +13,10 @@
 		]);
 	});
 
+
+
+	var controller = new Controller
+	,	player = new Player
+	,	menu = new Menu;
+
 })(jQuery);
