@@ -9,28 +9,25 @@
 				'controls': true,
 				'nativeControlsForTouch': false
 			},
-			'videos': [
-				{
-					'path': '../videos/video_1',
-					'name': 'Мужик в синем пиджаке',
-					'misc': []
-				},
-				{
-					'path': '../videos/video_2',
-					'name': 'Красиво летящие птицы',
-					'misc': []
-				},
-				{
-					'path': '../videos/misc_1',
-					'name': 'Отрывок из мультфильма про монстров',
-					'misc': []
-				},
-				{
-					'path': '../videos/misc_2',
-					'name': 'Отличные кадры про нашу планету',
-					'misc': []
-				}
-			]
+			'videos': [{
+				'path': '../videos/video_1',
+				'name': 'Мужик в синем пиджаке',
+				'misc': [{
+					'start': 2.3
+				}]
+			}, {
+				'path': '../videos/video_2',
+				'name': 'Красиво летящие птицы',
+				'misc': []
+			}, {
+				'path': '../videos/misc_1',
+				'name': 'Отрывок из мультфильма про монстров',
+				'misc': []
+			}, {
+				'path': '../videos/misc_2',
+				'name': 'Отличные кадры про нашу планету',
+				'misc': []
+			}]
 		});
 
 })(jQuery);

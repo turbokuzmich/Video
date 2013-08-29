@@ -3,7 +3,8 @@
 	var Player = Base.extend({
 		'defaults': {
 			'selectors': {
-				'player': '#player'
+				'player': '#player',
+				'misc': ''
 			},
 
 			'player': {},
@@ -11,7 +12,8 @@
 			'videos': [],
 
 			'settings': {
-				'prev_threshold': 5
+				'prev_threshold': 5,
+				'pause_threshold': 0.4
 			}
 		},
 
@@ -24,6 +26,22 @@
 			this.listen('menuItemPause', _.bind(this._onMenuItemPause, this));
 			this.listen('playerPrev', _.bind(this._onPlayerPrev, this));
 			this.listen('playerNext', _.bind(this._onPlayerNext, this));
+		},
+
+		'_processMiscs': function() {
+			var videos = this.get('videos')
+			,	thres = this.get('settings').pause_threshold
+			,	half = thres / 2;
+
+			_.each(videos, function(video) {
+				var miscs = video.misc;
+
+				_.each(miscs, function(misc) {
+					misc.start -= half;
+					misc.end = misc.start + thres;
+					misc.suspend = false;
+				});
+			});
 		},
 
 		'_setupPlayer': function() {
@@ -52,6 +70,28 @@
 
 					this.on('next', function() {
 						that.fire('playerNext');
+					});
+
+					this.on('timeupdate', function() {
+						var time = this.currentTime()
+						,	miscs = that.get('videos')[that.video].misc;
+
+						_.each(miscs, function(misc, index) {
+							if (misc.suspend) {
+								if (time < misc.start || time > misc.end) {
+									misc.suspend = false;
+								};
+							} else {
+								if (time >= misc.start && time <= misc.end) {
+									misc.suspend = true;
+									player.pause();
+									that.fire('playerMiscFound', {
+										'video': that.video,
+										'misc': index
+									});
+								};
+							}
+						});
 					});
 
 					that.fire('playerGotVideos', that.get('videos'));
@@ -144,6 +184,7 @@
 
 		'initialize': function() {
 			this._bindEvents();
+			this._processMiscs();
 			this._setupPlayer();
 		}
 	});
