@@ -4,7 +4,8 @@
 		'defaults': {
 			'selector_container': '.wrap',
 
-			'class_pre_init': 'pre-init'
+			'class_pre_init': 'pre-init',
+			'default_title': 'Видеоплеер'
 		},
 
 		'isMobile': {
@@ -47,11 +48,23 @@
 		},
 
 		'_onPlayerPlay': function(event, data) {
-			document.title = '▶ ' + data.data.name;
+			this._updateTitle('▶ ' + data.data.name);
 		},
 
 		'_onPlayerPause': function(event, data) {
-			document.title = data.data.name;
+			this._updateTitle(data.data.name);
+		},
+
+		'_onPlayerEnded': function() {
+			this._updateTitle();
+		},
+
+		'_updateTitle': function(title) {
+			if (!title) {
+				title = this.get('default_title');
+			};
+
+			document.title = title;
 		},
 
 		'_bindEvents': function() {
@@ -59,10 +72,12 @@
 			this.listen('playerReady', _.bind(this._onPlayerReady, this));
 			this.listen('playerPlay', _.bind(this._onPlayerPlay, this));
 			this.listen('playerPause', _.bind(this._onPlayerPause, this));
+			this.listen('playerEnded', _.bind(this._onPlayerEnded, this));
 		},
 
 		'initialize': function() {
 			this._bindEvents();
+			this._updateTitle();
 		}
 	});
 

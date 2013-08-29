@@ -271,7 +271,7 @@
 		position: absolute;
 		left: 0; right: 0; bottom: 100%;
 		width: 100%; height: 100%;
-		z-index: 1;
+		z-index: 2;
 		.transition(bottom .4s cubic-bezier(0.180, 0.580, 0.125, 1.170));
 
 		&.m-open {
@@ -432,6 +432,30 @@
 	}
 }
 
+.button-misc {
+	display: block;
+	background: url(../images/skin/misc-sign.png) 50% 50% no-repeat;
+	width: 48px; height: 48px;
+	color: transparent;
+	background-color: white;
+	position: absolute;
+	right: -48px; top: 128px;
+	z-index: 1;
+	.box-shadow(0 0 10px #00bdff);
+	.border-radius(50%);
+	.opacity(0);
+	.translate(0, 0);
+	.transition(all .5s cubic-bezier(0.085, 0.435, 0.120, 1.000));
+
+	&.m-visible {
+		.translate(-70px, 0);
+		.opacity(100);
+	}
+	&:hover {
+		.box-shadow(0 0 20px #00bdff);
+	}
+}
+
 
 
 
@@ -550,5 +574,9 @@
 			background-image: url(../images/skin/menu-bg@2x.jpg);
 			background-size: 1024px 767px;
 		}
+	}
+	.button-misc {
+		background-image: url(../images/skin/misc-sign@2x.png);
+		background-size: 12px 26px;
 	}
 }

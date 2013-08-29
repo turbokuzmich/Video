@@ -359,11 +359,15 @@
 			});
 
 			this.listen('playerPlay', function(event, data) {
-				that._onPlayerPlay(data.index);
+				if (data.type == 'video') {
+					that._onPlayerPlay(data.index);
+				};
 			});
 
-			this.listen('playerPause', function(event) {
-				that._onPlayerPause();
+			this.listen('playerPause', function(event, data) {
+				if (data.type == 'video') {
+					that._onPlayerPause();
+				};
 			});
 		}
 	});
