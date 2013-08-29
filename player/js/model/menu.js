@@ -1,12 +1,23 @@
 (function($) {
 
+	if (!window.requestAnimationFrame) {
+		window.requestAnimationFrame = (function() {
+			return window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback, element) {
+				window.setTimeout(callback, 1000 / 60);
+			};
+		})();
+	};
+
 	var Menu = Base.extend({
 		'defaults': {
 			'platform': 'desktop',
 
 			'selector_wrapper': '.top-panel-container',
 			'selector_puller': '.pull',
+			'selector_menu_scroll': '.menu-scroll',
 			'selector_menu': '.menu',
+			'selector_arrow_up': '.menu-arrow.m-up',
+			'selector_arrow_down': '.menu-arrow.m-down',
 
 			'template_menu_item': doT.template('<li>{{=it.name}}</li>'),
 			'class_playing': 'm-playing',
@@ -21,11 +32,132 @@
 		'_findElements': function() {
 			this.$wrapper = $(this.get('selector_wrapper'));
 			this.$puller = this.$wrapper.find(this.get('selector_puller'));
+			this.$menu_scroll = this.$wrapper.find(this.get('selector_menu_scroll'));
 			this.$menu = this.$wrapper.find(this.get('selector_menu'));
+			this.$arrow_up = this.$wrapper.find(this.get('selector_arrow_up'));
+			this.$arrow_down = this.$wrapper.find(this.get('selector_arrow_down'));
 		},
 
 		'_bindEvents': function() {
 			this.$menu.on('click', 'li', _.bind(this._onMenuItemClick, this));
+		},
+
+		'_bindMenuScroll': function() {
+			var that = this
+			,	$scroll = this.$menu_scroll
+			,	$menu = this.$menu
+			,	$arrow_up = this.$arrow_up
+			,	$arrow_down = this.$arrow_down
+			,	$win = $(window)
+
+			,	scroll_height = 0
+			,	menu_height = 0
+			,	scroll = 0
+			,	speed = 120
+
+			,	dir = 0
+			,	last_tick = 0;
+
+			var defineHeights = function() {
+				scroll_height = $scroll.height();
+				menu_height = $menu.height();
+			};
+
+			var checkArrows = function() {
+				if (menu_height < scroll_height) {
+					$arrow_up.addClass('hide');
+					$arrow_down.addClass('hide');
+				} else {
+					$arrow_up.removeClass('hide');
+					$arrow_down.removeClass('hide');
+				};
+			};
+
+			var correctScroll = function() {
+				if (menu_height < scroll_height) {
+					scroll = 0;
+				} else if (scroll > (menu_height - scroll_height)) {
+					scroll = menu_height - scroll_height;
+				};
+
+				$scroll.scrollTop(scroll);
+			};
+
+			var tick = function() {
+				if (dir != 0) {
+					var now = +(new Date)
+					,	stop = false
+					,	time_delta = now - last_tick
+					,	scroll_delta = (time_delta / 1000) * speed;
+
+					if (dir < 0) {
+						scroll -= scroll_delta;
+					} else {
+						scroll += scroll_delta;
+					};
+
+					if (scroll < 0) {
+						scroll = 0;
+						stop = true;
+					};
+					if (scroll > (menu_height - scroll_height)) {
+						scroll = menu_height - scroll_height;
+						stop = true;
+					};
+
+					$scroll.scrollTop(scroll);
+
+					if (!stop) {
+						requestAnimationFrame(tick);
+					}
+
+					last_tick = now;
+				};
+			};
+
+			$arrow_up.on({
+				'mousedown touchstart': function(e) {
+					e.preventDefault();
+
+					dir = -1;
+					last_tick = +(new Date);
+
+					tick();
+				},
+				'mouseup touchend': function() {
+					dir = 0;
+					last_tick = 0;
+				},
+				'click': function(e) {
+					e.preventDefault();
+				}
+			});
+
+			$arrow_down.on({
+				'mousedown touchstart': function(e) {
+					e.preventDefault()
+
+					dir = 1;
+					last_tick = +(new Date);
+
+					tick();
+				},
+				'mouseup touchend': function() {
+					dir = 0;
+					last_tick = 0;
+				},
+				'click': function(e) {
+					e.preventDefault();
+				}
+			});
+
+			$win.on('orientationchange', function() {
+				defineHeights();
+				checkArrows();
+				correctScroll();
+			});
+			defineHeights();
+			checkArrows();
 		},
 
 		'_wirePullerDrag': function() {
@@ -223,6 +355,7 @@
 
 			this.listen('playerGotVideos', function(event, data) {
 				that._buildMenu(data);
+				that._bindMenuScroll();
 			});
 
 			this.listen('playerPlay', function(event, data) {

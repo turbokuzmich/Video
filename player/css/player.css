@@ -1490,6 +1490,9 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   bottom: 0;
   background-image: url(../images/skin/button-menu-down.png);
 }
+.player-peripherals .menu-container .menu-arrow.hide {
+  display: none;
+}
 .player-peripherals .menu-container .menu-arrow:hover {
   background-position: -71px 0;
 }
