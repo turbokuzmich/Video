@@ -2,6 +2,9 @@
 
 	var Controller = Base.extend({
 		'defaults': {
+			'selector_container': '.wrap',
+
+			'class_pre_init': 'pre-init'
 		},
 
 		'isMobile': {
@@ -39,8 +42,23 @@
 			};
 		},
 
+		'_onPlayerReady': function() {
+			$(this.get('selector_container')).removeClass(this.get('class_pre_init'));
+		},
+
+		'_onPlayerPlay': function(event, data) {
+			document.title = '▶ ' + data.data.name;
+		},
+
+		'_onPlayerPause': function(event, data) {
+			document.title = data.data.name;
+		},
+
 		'_bindEvents': function() {
 			this.listen('platformRequest', _.bind(this._onPlatformRequested, this));
+			this.listen('playerReady', _.bind(this._onPlayerReady, this));
+			this.listen('playerPlay', _.bind(this._onPlayerPlay, this));
+			this.listen('playerPause', _.bind(this._onPlayerPause, this));
 		},
 
 		'initialize': function() {

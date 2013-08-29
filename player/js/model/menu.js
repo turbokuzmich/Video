@@ -8,7 +8,7 @@
 			'selector_puller': '.pull',
 			'selector_menu': '.menu',
 
-			'template_menu_item': doT.template('<li>{{it.name}}</li>'),
+			'template_menu_item': doT.template('<li>{{=it.name}}</li>'),
 			'class_playing': 'm-playing',
 			'class_open': 'm-open',
 
@@ -21,7 +21,11 @@
 		'_findElements': function() {
 			this.$wrapper = $(this.get('selector_wrapper'));
 			this.$puller = this.$wrapper.find(this.get('selector_puller'));
-			this.$menu = this.$wrapper.find(this.get('selector_puller'));
+			this.$menu = this.$wrapper.find(this.get('selector_menu'));
+		},
+
+		'_bindEvents': function() {
+			this.$menu.on('click', 'li', _.bind(this._onMenuItemClick, this));
 		},
 
 		'_wirePullerDrag': function() {
@@ -166,14 +170,67 @@
 			};
 		},
 
+		'_buildMenu': function(data) {
+			var html = ''
+			,	template = this.get('template_menu_item');
+
+			_.each(data, function(video) {
+				html += template(video);
+			});
+
+			this.$menu.html(html);
+		},
+
+		'_onPlayerPlay': function(index) {
+			var playing_class = this.get('class_playing');
+
+			this.$menu.children().removeClass(playing_class).eq(index).addClass(playing_class);
+			this._closeMenu();
+		},
+
+		'_onPlayerPause': function() {
+			this.$menu.children().removeClass(this.get('class_playing'));
+		},
+
+		'_onMenuItemClick': function(e) {
+			e.preventDefault();
+
+			var $item = $(e.target)
+			,	index = $item.index()
+			,	is_playing = $item.hasClass(this.get('class_playing'));
+
+			var data = {
+				'index': index
+			};
+
+			if (is_playing) {
+				this.fire('menuItemPause', data);
+			} else {
+				this.fire('menuItemPlay', data);
+			};
+		},
+
 		'initialize': function() {
 			var that = this;
 
 			this._findElements();
+			this._bindEvents();
 
 			this.fire('platformRequest', function(platform) {
 				that.set('platform', platform);
 				that._wirePuller();
+			});
+
+			this.listen('playerGotVideos', function(event, data) {
+				that._buildMenu(data);
+			});
+
+			this.listen('playerPlay', function(event, data) {
+				that._onPlayerPlay(data.index);
+			});
+
+			this.listen('playerPause', function(event) {
+				that._onPlayerPause();
 			});
 		}
 	});

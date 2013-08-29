@@ -11,6 +11,12 @@
 .wrap {
 	width: 960px; height: 540px;
 	margin: 0 auto;
+	.opacity(100);
+	.transition(opacity 1s ease-out);
+
+	&.pre-init {
+		.opacity(0);
+	}
 }
 
 // ipad

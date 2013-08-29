@@ -1590,6 +1590,17 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   width: 960px;
   height: 540px;
   margin: 0 auto;
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  /* transition */
+  -webkit-transition: opacity 1s ease-out;
+  -moz-transition: opacity 1s ease-out;
+  -o-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
+}
+.wrap.pre-init {
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 @media all and (device-width: 768px) and (device-height: 1024px) {
   html,
