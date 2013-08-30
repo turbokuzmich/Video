@@ -17,19 +17,17 @@
 			'videos': [{
 				'path': '../videos/video_1',
 				'name': 'Мужик в синем пиджаке',
-				'misc': [{
-					'start': 2.3,
+				'misc': {
 					'path': '../videos/misc_1',
 					'name': 'Отрывок из мультфильма про монстров'
-				}]
+				}
 			}, {
 				'path': '../videos/video_2',
 				'name': 'Красиво летящие птицы',
-				'misc': [{
-					'start': 5.7,
+				'misc': {
 					'path': '../videos/misc_2',
 					'name': 'Отличные кадры про нашу планету'
-				}]
+				}
 			}]
 		});
 

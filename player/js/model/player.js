@@ -13,8 +13,9 @@
 
 			'settings': {
 				'prev_threshold': 5,
-				'pause_threshold': 0.4,
-				'misc_button_visible': 'm-visible'
+				'misc_show_at': -15,
+				'misc_hide_at': -5,
+				'misc_button_visible_class': 'm-visible'
 			}
 		},
 
@@ -23,7 +24,8 @@
 		'video': null,
 		'misc': null,
 
-		'video_paused_at': null,
+		'misc_button_visible': false,
+		'should_show_misc': false,
 
 		'_findElements': function() {
 			this.$misc = $(this.get('selectors').misc);
@@ -43,33 +45,18 @@
 			this.$misc.on('click', function(e) {
 				e.preventDefault();
 
-				var index = $(this).data('misc');
-
-				if (index != null) {
-					that._playMisc(index);
-				};
-			});
-		},
-
-		'_processMiscs': function() {
-			var videos = this.get('videos')
-			,	thres = this.get('settings').pause_threshold
-			,	half = thres / 2;
-
-			_.each(videos, function(video) {
-				var miscs = video.misc;
-
-				_.each(miscs, function(misc) {
-					misc.start -= half;
-					misc.end = misc.start + thres;
-					misc.suspend = false;
-				});
+				that._hideMiscButton();
+				that.should_show_misc = true;
 			});
 		},
 
 		'_setupPlayer': function() {
 			var that = this
+			,	misc_show_at = this.get('settings').misc_show_at
+			,	misc_hide_at = this.get('settings').misc_hide_at
+
 			,	$player = $(this.get('selectors').player)
+
 			,	player = videojs($player.attr('id'), this.get('player'), function() {
 					that.player = this;
 
@@ -84,7 +71,7 @@
 							that.fire('playerPlay', {
 								'type': 'misc',
 								'index': that.misc,
-								'data': that.get('videos')[that.video].misc[that.misc]
+								'data': that.get('videos')[that.video].misc
 							});
 						};
 					});
@@ -100,7 +87,7 @@
 							that.fire('playerPause', {
 								'type': 'misc',
 								'index': that.misc,
-								'data': that.get('videos')[that.video].misc[that.misc]
+								'data': that.get('videos')[that.video].misc
 							});
 						};
 					});
@@ -116,7 +103,7 @@
 							that.fire('playerEnded', {
 								'type': 'misc',
 								'index': that.misc,
-								'data': that.get('videos')[that.video].misc[that.misc]
+								'data': that.get('videos')[that.video].misc
 							});
 						};
 					});
@@ -131,20 +118,15 @@
 
 					this.on('timeupdate', function() {
 						var time = this.currentTime()
-						,	miscs = that.get('videos')[that.video].misc;
+						,	duration = this.duration()
+						,	misc = that.get('videos')[that.video].misc;
 
-						if (that.misc == null) {
-							_.each(miscs, function(misc, index) {
-								if (misc.suspend) {
-									if (time < misc.start || time > misc.end) {
-										misc.suspend = false;
-									};
-								} else {
-									if (time >= misc.start && time <= misc.end) {
-										that._miscInvitation(index);
-									};
-								}
-							});
+						if (that.misc == null && !that.should_show_misc && misc) {
+							if (time >= (duration + misc_show_at) && time <= (duration + misc_hide_at)) {
+								that._showMiscButton();
+							} else {
+								that._hideMiscButton();
+							};
 						};
 					});
 
@@ -221,6 +203,7 @@
 
 		'_playVideo': function(index, time) {
 			this.misc = null;
+			this.should_show_misc = false;
 			this._setVideo(index);
 			this._play(time);
 		},
@@ -228,7 +211,7 @@
 		'_setMisc': function(index) {
 			this.misc = index;
 			
-			this._src(this.get('videos')[this.video].misc[index].path);
+			this._src(this.get('videos')[this.video].misc.path);
 		},
 
 		'_playMisc': function(index, time) {
@@ -284,19 +267,18 @@
 			};
 		},
 
-		'_miscInvitation': function(index) {
-			var misc = this.get('videos')[this.video].misc[index];
-				misc.suspend = true;
+		'_showMiscButton': function() {
+			if (this.misc_button_visible) return;
+				this.misc_button_visible = true;
 
-			this.$misc
-				.addClass(this.get('settings').misc_button_visible)
-				.data('misc', index);
+			this.$misc.addClass(this.get('settings').misc_button_visible_class);
+		},
 
-			this._pauseVideo();
-			this.fire('playerMiscFound', {
-				'video': this.video,
-				'misc': index
-			});
+		'_hideMiscButton': function() {
+			if (this.misc_button_visible === false) return;
+				this.misc_button_visible = false;
+
+			this.$misc.removeClass(this.get('settings').misc_button_visible_class);
 		},
 
 		'_onMenuItemPlay': function(event, data) {
@@ -328,21 +310,15 @@
 		'_onPlayerPlay': function(event, data) {
 			switch (data.type) {
 				case 'video':
-					this.video_paused_at = null;
 					break;
 				case 'misc':
 					break;
 			};
-
-			this.$misc
-				.removeClass(this.get('settings').misc_button_visible)
-				.data('misc', null);
 		},
 
 		'_onPlayerPause': function(event, data) {
 			switch (data.type) {
 				case 'video':
-					this.video_paused_at = this.player.currentTime();
 					break;
 				case 'misc':
 					break;
@@ -352,10 +328,16 @@
 		'_onPlayerEnded': function(event, data) {
 			switch (data.type) {
 				case 'video':
-					this._playNext();
+					if (this.should_show_misc) {
+						this._playMisc(this.video);
+					} else {
+						this._playNext();
+					};
 					break;
 				case 'misc':
-					this._playVideo(this.video, this.video_paused_at);
+					this.should_show_misc = false;
+					this.misc = null;
+					this._playNext();
 					break;
 			}
 		},
@@ -363,7 +345,6 @@
 		'initialize': function() {
 			this._findElements();
 			this._bindEvents();
-			this._processMiscs();
 			this._setupPlayer();
 		}
 	});
