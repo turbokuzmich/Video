@@ -1526,6 +1526,35 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   -o-transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
   transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
 }
+.button-misc i {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  display: block;
+  font-size: 15px;
+  font-style: normal;
+  height: 27px;
+  line-height: 27px;
+  padding-right: 12px;
+  position: absolute;
+  right: 4px;
+  text-align: center;
+  top: 11px;
+  width: 123px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  /* border-radius */
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  /* transition */
+  -webkit-transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
+  -o-transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
+  transition: all 0.5s cubic-bezier(0.085, 0.435, 0.12, 1);
+}
 .button-misc.m-visible {
   -webkit-transform: translate(-70px, 0);
   -ms-transform: translate(-70px, 0);
@@ -1538,6 +1567,13 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   -webkit-box-shadow: 0 0 20px #00bdff;
   -moz-box-shadow: 0 0 20px #00bdff;
   box-shadow: 0 0 20px #00bdff;
+}
+.button-misc:hover i {
+  opacity: 100;
+  filter: alpha(opacity=10000);
+  -webkit-transform: translate(-32px, 0);
+  -ms-transform: translate(-32px, 0);
+  transform: translate(-32px, 0);
 }
 @media screen and (device-width: 768px) and (device-height: 1024px) {
   .vjs-default-skin .vjs-fullscreen-control {
