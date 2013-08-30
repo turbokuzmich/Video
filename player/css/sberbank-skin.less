@@ -346,7 +346,7 @@
 	}
 
 	.menu-container {
-		background: url(../images/skin/menu-bg.jpg) -2px -2px no-repeat;
+		background: url(../images/skin/menu-bg.jpg) -2px -2px repeat;
 		position: absolute;
 		bottom: 145px;
 	    left: 50px;
@@ -483,7 +483,20 @@
 }
 
 
-
+.wrap {
+	&.m-fullscreen {
+		.player-peripherals {
+			.top-panel-container {
+				position: fixed;
+				z-index: 12123123123123;
+			}
+		}
+		.button-misc {
+			position: fixed;
+			z-index: 12123123123123;
+		}
+	}
+}
 
 // ipad
 @media screen and (device-width: 768px) and (device-height: 1024px) {

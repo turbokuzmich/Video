@@ -1410,7 +1410,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   background: url(../images/skin/top-panel-content-right.png) 100% 50% repeat-y;
 }
 .player-peripherals .menu-container {
-  background: url(../images/skin/menu-bg.jpg) -2px -2px no-repeat;
+  background: url(../images/skin/menu-bg.jpg) -2px -2px repeat;
   bottom: 145px;
   left: 50px;
   position: absolute;
@@ -1575,6 +1575,14 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   -webkit-transform: translate(-32px, 0);
   -ms-transform: translate(-32px, 0);
   transform: translate(-32px, 0);
+}
+.wrap.m-fullscreen .player-peripherals .top-panel-container {
+  position: fixed;
+  z-index: 12123123123123;
+}
+.wrap.m-fullscreen .button-misc {
+  position: fixed;
+  z-index: 12123123123123;
 }
 @media screen and (device-width: 768px) and (device-height: 1024px) {
   .vjs-default-skin .vjs-fullscreen-control {

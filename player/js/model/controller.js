@@ -5,6 +5,7 @@
 			'selector_container': '.wrap',
 
 			'class_pre_init': 'pre-init',
+			'class_full_screen': 'm-fullscreen',
 			'default_title': 'Видеоплеер'
 		},
 
@@ -59,6 +60,14 @@
 			this._updateTitle();
 		},
 
+		'_onPlayerFullscreen': function(event, is_fullscreen) {
+			if (is_fullscreen) {
+				$(this.get('selector_container')).addClass(this.get('class_full_screen'));
+			} else {
+				$(this.get('selector_container')).removeClass(this.get('class_full_screen'));
+			};
+		},
+
 		'_updateTitle': function(title) {
 			if (!title) {
 				title = this.get('default_title');
@@ -73,6 +82,7 @@
 			this.listen('playerPlay', _.bind(this._onPlayerPlay, this));
 			this.listen('playerPause', _.bind(this._onPlayerPause, this));
 			this.listen('playerEnded', _.bind(this._onPlayerEnded, this));
+			this.listen('playerFullscreen', _.bind(this._onPlayerFullscreen, this));
 		},
 
 		'initialize': function() {

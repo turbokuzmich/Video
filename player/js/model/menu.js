@@ -115,6 +115,12 @@
 				};
 			};
 
+			var updateMenu = function() {
+				defineHeights();
+				checkArrows();
+				correctScroll();
+			};
+
 			$arrow_up.on({
 				'mousedown touchstart': function(e) {
 					e.preventDefault();
@@ -151,13 +157,9 @@
 				}
 			});
 
-			$win.on('orientationchange', function() {
-				defineHeights();
-				checkArrows();
-				correctScroll();
-			});
-			defineHeights();
-			checkArrows();
+			$win.on('orientationchange', updateMenu);
+			this.listen('playerFullscreen', updateMenu);
+			updateMenu();
 		},
 
 		'_wirePullerDrag': function() {

@@ -108,6 +108,10 @@
 						};
 					});
 
+					this.on('fullscreenchange', function() {
+						that.fire('playerFullscreen', this.isFullScreen);
+					});
+
 					this.on('prev', function() {
 						that.fire('playerPrev');
 					});
