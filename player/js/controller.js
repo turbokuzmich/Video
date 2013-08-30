@@ -7,8 +7,12 @@
 				'width': '100%',
 				'height': '100%',
 				'controls': true,
-				'preload': 'auto',
-				'nativeControlsForTouch': false
+				'preload': true,
+				'nativeControlsForTouch': false,
+
+				'flash': {
+					'swf': 'js/libz/videojs/video-js.swf'
+				}
 			},
 			'videos': [{
 				'path': '../videos/video_1',

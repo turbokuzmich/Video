@@ -153,95 +153,87 @@
 
 					that._setVideo(0);
 				});
+
 		},
 
-		'_setVideo': function(index) {
-			var video_data = this.get('videos')[index];
-
-			this.video = index;
+		'_src': function(path) {
 			this.player.src([
 				{
 					'type': 'video/mp4',
-					'src': video_data.path + '.mp4'
+					'src': path + '.mp4'
 				}, {
 					'type': 'video/webm',
-					'src': video_data.path + '.webm'
+					'src': path + '.webm'
 				}, {
-					'type': 'video/ogg',
-					'src': video_data.path + '.flv'
+					'type': 'video/flv',
+					'src': path + '.flv'
 				}
 			]);
+		},
+
+		'_play': function(time) {
+			var player = this.player
+			,	tech = player.techName.toLowerCase();
+
+			if (time == null) {
+				player.play();
+			} else {
+				if (tech === 'flash') {
+					player.on('playing', function() {
+						var playing_cb = arguments.callee;
+
+						player.pause();
+						player.off('playing', playing_cb);
+
+						player.on('canplaythrough', function() {
+							var canplaythrough_cb = arguments.callee;
+
+							player.currentTime(time);
+							player.play();
+							player.off('canplaythrough', canplaythrough_cb);
+						});
+					});
+					player.play();
+				} else {
+					player.on('loadedmetadata', function() {
+						var loadedmetadata_cb = arguments.callee
+						,	wait_timer;
+
+						wait_timer = setInterval(function() {
+							if (player.tech.el_.seekable.length) {
+								player.currentTime(time);
+								player.play();
+
+								player.off('loadedmetadata', loadedmetadata_cb);
+								clearInterval(wait_timer);
+							};
+						}, 20);
+					});
+				};
+			};
+		},
+
+		'_setVideo': function(index) {
+			this.video = index;
+
+			this._src(this.get('videos')[index].path);
 		},
 
 		'_playVideo': function(index, time) {
 			this.misc = null;
 			this._setVideo(index);
-
-			var player = this.player
-			,	wait_timer
-			,	cb;
-
-			if (time == null) {
-				player.play();
-			} else {
-				player.on('loadedmetadata', function() {
-					time = parseFloat(time.toFixed(1));
-					cb = arguments.callee;
-					wait_timer = setInterval(function() {
-						if (player.tech.el_.seekable.length) {
-							player.currentTime(time);
-							player.play();
-
-							player.off('loadedmetadata', cb);
-							clearInterval(wait_timer);
-						};
-					}, 50);
-				});
-			};
+			this._play(time);
 		},
 
 		'_setMisc': function(index) {
-			var video_data = this.get('videos')[this.video].misc[index];
-
 			this.misc = index;
-			this.player.src([
-				{
-					'type': 'video/mp4',
-					'src': video_data.path + '.mp4'
-				}, {
-					'type': 'video/webm',
-					'src': video_data.path + '.webm'
-				}, {
-					'type': 'video/ogg',
-					'src': video_data.path + '.flv'
-				}
-			]);
+			
+			this._src(this.get('videos')[this.video].misc[index].path);
 		},
 
 		'_playMisc': function(index, time) {
 			this._setMisc(index);
-
-			var player = this.player
-			,	wait_timer
-			,	cb
-
-			if (time == null) {
-				player.play();
-			} else {
-				player.on('loadedmetadata', function() {
-					time = parseFloat(time.toFixed(1));
-					cb = arguments.callee;
-					wait_timer = setInterval(function() {
-						if (player.tech.el_.seekable.length) {
-							player.currentTime(time);
-							player.play();
-
-							player.off('loadedmetadata', cb);
-							clearInterval(wait_timer);
-						};
-					}, 50);
-				});
-			};
+			this._play(time);
 		},
 
 		'_pauseVideo': function() {
