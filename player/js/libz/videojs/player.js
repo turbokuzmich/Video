@@ -458,7 +458,7 @@ vjs.Player.prototype.techGet = function(method){
 
   // Make sure there is a tech
   // if (!this.tech) {
-  //   return;
+    // return;
   // }
 
   if (this.tech.isReady_) {

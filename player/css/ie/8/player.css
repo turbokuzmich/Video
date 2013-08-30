@@ -1,0 +1,10 @@
+.button-misc {
+  color: white;
+  text-decoration: none;
+}
+.button-misc i {
+  display: none;
+}
+.button-misc.m-visible {
+  right: 22px;
+}
