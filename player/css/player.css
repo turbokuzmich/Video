@@ -1275,6 +1275,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   right: 111px;
   top: 83px;
   width: 41px;
+  cursor: pointer;
 }
 .vjs-default-skin .vjs-next-control:before {
   display: none;
@@ -1293,6 +1294,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   left: 111px;
   top: 83px;
   width: 41px;
+  cursor: pointer;
 }
 .vjs-default-skin .vjs-prev-control:before {
   display: none;
