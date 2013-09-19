@@ -19,7 +19,7 @@
 			'selector_arrow_up': '.menu-arrow.m-up',
 			'selector_arrow_down': '.menu-arrow.m-down',
 
-			'template_menu_item': doT.template('<li>{{=it.name}}</li>'),
+			'template_menu_item': doT.template('<li class="{{?it.hide}}hide{{?}}">{{=it.name}}</li>'),
 			'class_playing': 'm-playing',
 			'class_open': 'm-open',
 
