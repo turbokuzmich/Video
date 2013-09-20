@@ -13,8 +13,8 @@
 
 			'settings': {
 				'prev_threshold': 5,
-				'misc_show_at': -15,
-				'misc_hide_at': -5,
+				'misc_show_at': -20,
+				'misc_hide_at': -2,
 				'misc_button_visible_class': 'm-visible'
 			}
 		},
