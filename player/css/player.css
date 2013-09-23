@@ -971,7 +971,14 @@ body.vjs-full-window {
 }
 /* -----------------------------------------------------------------------------
 The original source of this file lives at
-https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-default-skin .vjs-control-bar {
+https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.video-js .vjs-tech {
+  height: 82%;
+  left: 9%;
+  position: absolute;
+  top: 7%;
+  width: 82%;
+}
+.vjs-default-skin .vjs-control-bar {
   display: block;
   height: 134px;
   background-color: transparent;
@@ -1102,7 +1109,37 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   box-shadow: 0 0 21px rgba(194,247,195,0.75), inset 0 0 0 1px #79e320, inset 0 0 7px rgba(0,0,0,0.5);
 }
 .vjs-default-skin .vjs-big-play-button {
+  display: block;
+  padding: 0;
+  width: 210px;
+  height: 210px;
+  margin: -105px 0 0 -105px;
+  border: 0 none transparent;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url('../images/skin/big-play-button.png');
+  background-repeat: no-repeat;
+  background-position: 80px 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* border-radius */
+  -webkit-border-radius: 210px;
+  -moz-border-radius: 210px;
+  border-radius: 210px;
+  /* box-shadow */
+  -webkit-box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
+  -moz-box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
+  box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
+  /* transition */
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.vjs-default-skin .vjs-big-play-button:before {
   display: none;
+  content: '';
 }
 .vjs-default-skin .vjs-seek-handle {
   display: block;
@@ -1311,6 +1348,16 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   filter: alpha(opacity=10000);
   visibility: visible;
 }
+.vjs-default-skin:hover .vjs-big-play-button,
+.vjs-default-skin .vjs-big-play-button:focus {
+  outline: 0;
+  border: 0 none;
+  background-color: #fff;
+  /* box-shadow */
+  -webkit-box-shadow: 0 0 20px rgba(126,194,69,0.55), inset 0 0 0 1px #9bebfb;
+  -moz-box-shadow: 0 0 20px rgba(126,194,69,0.55), inset 0 0 0 1px #9bebfb;
+  box-shadow: 0 0 20px rgba(126,194,69,0.55), inset 0 0 0 1px #9bebfb;
+}
 .player-peripherals {
   position: relative;
   height: 100%;
@@ -1504,7 +1551,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 }
 .button-misc {
   display: block;
-  background: url(../images/skin/misc-sign.png) 50% 50% no-repeat;
+  background: url('../images/skin/misc-sign.png') 50% 50% no-repeat;
   width: 48px;
   height: 48px;
   color: transparent;
@@ -1514,9 +1561,9 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   top: 128px;
   z-index: 1;
   /* box-shadow */
-  -webkit-box-shadow: 0 0 10px #00bdff;
-  -moz-box-shadow: 0 0 10px #00bdff;
-  box-shadow: 0 0 10px #00bdff;
+  -webkit-box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
+  -moz-box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
+  box-shadow: 0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb;
   /* border-radius */
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -1571,9 +1618,9 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
 }
 .button-misc:hover {
   /* box-shadow */
-  -webkit-box-shadow: 0 0 20px #00bdff;
-  -moz-box-shadow: 0 0 20px #00bdff;
-  box-shadow: 0 0 20px #00bdff;
+  -webkit-box-shadow: 0 0 20px rgba(126,194,69,0.50);
+  -moz-box-shadow: 0 0 20px rgba(126,194,69,0.50);
+  box-shadow: 0 0 20px rgba(126,194,69,0.50);
 }
 .button-misc:hover i {
   opacity: 100;
@@ -1653,6 +1700,11 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.vjs-def
   .vjs-default-skin .vjs-control-bar .vjs-control-bar-center {
     background-image: url(../images/skin/control-panel-center@2x.png);
     background-size: 680px 82px;
+  }
+  .vjs-default-skin .vjs-big-play-button {
+    background-image: url('../images/skin/big-play-button@2x.png');
+    -webkit-background-size: 75px 89px;
+    background-size: 75px 89px;
   }
   .player-peripherals .top-panel-container .top-panel .pull .pull-left {
     background-image: url(../images/skin/top-panel-left@2x.png);

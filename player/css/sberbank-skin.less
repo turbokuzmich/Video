@@ -5,6 +5,11 @@
 
 .video-js {
 	.vjs-tech {
+		height: 82%;
+	    left: 9%;
+	    position: absolute;
+	    top: 7%;
+	    width: 82%;
 	}
 }
 
@@ -97,9 +102,31 @@
 
 		}
 	}
+
 	.vjs-big-play-button {
-		display: none;
+		display: block;
+		padding: 0;
+		width: 210px;
+		height: 210px;
+		margin: -105px 0 0 -105px;
+		border: 0 none transparent;
+		background-color: #fff;
+		background-color: rgba(255,255,255,.70);
+		background-image: url('../images/skin/big-play-button.png');
+		background-repeat: no-repeat;
+		background-position: 80px 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		.border-radius(210px);
+		.box-shadow(~'0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb');
+		.transition(all .2s ease);
+		&:before {
+			display: none;
+			content: '';
+		}
 	}
+
 	.vjs-seek-handle {
 		display: block;
 		width: 13px; height: 13px;
@@ -267,6 +294,15 @@
 			visibility: visible;
 		}
 	}
+
+}
+
+.vjs-default-skin:hover .vjs-big-play-button,
+.vjs-default-skin .vjs-big-play-button:focus {
+	outline: 0;
+	border:0 none;
+	background-color: #fff;
+	.box-shadow(~'0 0 20px rgba(126,194,69,0.55), inset 0 0 0 1px #9bebfb');
 }
 
 .player-peripherals {
@@ -442,14 +478,14 @@
 
 .button-misc {
 	display: block;
-	background: url(../images/skin/misc-sign.png) 50% 50% no-repeat;
+	background: url('../images/skin/misc-sign.png') 50% 50% no-repeat;
 	width: 48px; height: 48px;
 	color: transparent;
 	background-color: white;
 	position: absolute;
 	right: -48px; top: 128px;
 	z-index: 1;
-	.box-shadow(0 0 10px #00bdff);
+	.box-shadow(~'0 0 10px rgba(126,194,69,0.50), inset 0 0 0 1px #9bebfb');
 	.border-radius(50%);
 	.opacity(0);
 	.translate(0, 0);
@@ -481,7 +517,7 @@
 		.opacity(100);
 	}
 	&:hover {
-		.box-shadow(0 0 20px #00bdff);
+		.box-shadow(~'0 0 20px rgba(126,194,69,0.50)');
 
 		i {
 			.opacity(100);
@@ -489,6 +525,7 @@
 		}
 	}
 }
+
 
 
 .wrap {
@@ -581,6 +618,12 @@
 				background-image: url(../images/skin/control-panel-center@2x.png);
 				background-size: 680px 82px;
 			}
+		}
+
+		.vjs-big-play-button {
+			background-image: url('../images/skin/big-play-button@2x.png');
+			-webkit-background-size: 75px 89px;
+			background-size: 75px 89px;
 		}
 	}
 	.player-peripherals {
