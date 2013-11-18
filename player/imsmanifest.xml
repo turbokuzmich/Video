@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="TM_ship_SRC" version="1.1" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+    <organizations default="1955d300-0444-466d-9d99-4f826279aeb8">
+        <organization identifier="1955d300-0444-466d-9d99-4f826279aeb8">
+            <title>Система построения интегрированного управления рисками Сбербанка</title>
+            <item identifier="2939b253-1630-4896-894a-b39059e594e5" identifierref="44D33973">
+                <title>Старт</title>
+            </item>
+        </organization>
+    </organizations>
+    <resources xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p3">;
+        <resource identifier="44D33973" adlcp:scormType="sco" type="text/html" href="index.html">
+            <file href="index.html" />
+        </resource> 
+    </resources>
+</manifest>

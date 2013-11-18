@@ -137,5 +137,30 @@
 				'name': 'Заключительное слово'
 			}]
 		});
+	
+    pipwerks.SCORM.version = '1.2';
+    var unloaded = false;
+    
+    function sendScore(score) {
+        score = parseInt(score);
+
+        pipwerks.SCORM.set("cmi.core.score.raw", "" + score);
+		pipwerks.SCORM.set("cmi.core.lesson_status", "completed");
+        pipwerks.SCORM.save();
+    };
+
+    function unloadHandler(){
+        if (!unloaded) {
+        	pipwerks.SCORM.init();
+        	if (player.isFullyWatched()) {
+        		sendScore(100);
+        	};
+            pipwerks.SCORM.quit();
+            unloaded = true;
+        };
+    };
+
+    window.onbeforeunload = unloadHandler;
+    window.onunload = unloadHandler;
 
 })(jQuery);

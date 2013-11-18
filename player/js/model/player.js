@@ -271,6 +271,15 @@
 			};
 		},
 
+		'_setWatched': function() {
+			var videos = this.get('videos')
+			,	video = this.video;
+
+			if (video != null) {
+				videos[video].watched = true;
+			};
+		},
+
 		'_showMiscButton': function() {
 			if (this.misc_button_visible) return;
 				this.misc_button_visible = true;
@@ -337,6 +346,7 @@
 					} else {
 						this._playNext();
 					};
+					this._setWatched();
 					break;
 				case 'misc':
 					this.should_show_misc = false;
@@ -350,6 +360,12 @@
 			this._findElements();
 			this._bindEvents();
 			this._setupPlayer();
+		},
+
+		'isFullyWatched': function() {
+			return _.every(this.get('videos'), function(vid) {
+				return vid.watched;
+			});
 		}
 	});
 

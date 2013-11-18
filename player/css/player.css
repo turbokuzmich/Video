@@ -1460,7 +1460,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.video-j
   background: url(../images/skin/top-panel-content-right.png) 100% 50% repeat-y;
 }
 .player-peripherals .menu-container {
-  background: url(../images/skin/menu-bg.jpg) -2px -2px repeat;
+  background-color: #365259;
   bottom: 145px;
   left: 50px;
   position: absolute;
