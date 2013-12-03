@@ -10,8 +10,16 @@
 	<link rel="stylesheet" href="css/player.css">
 	<!--[if IE 8]><link rel="stylesheet" href="css/ie/8/player.css"><![endif]-->
 	<!--[if IE 9]><link rel="stylesheet" href="css/ie/9/player.css"><![endif]-->
+
+	<script type="text/javascript">var ie8 = false;</script>
+	<!--[if IE 8]>
+	<script type="text/javascript">ie8 = true;</script>
+	<![endif]-->
 </head>
 <body>
+	<div class="ie8-player-container hide">
+		<div id="ie8-player"></div>
+	</div>
 	<div class="wrap pre-init">
 		<div class="player-peripherals">
 			<video id="player" class="video-js vjs-default-skin"></video>
@@ -84,6 +92,7 @@
 	<script src="js/libz/videojs/json.js"></script>
 	<script src="js/libz/videojs/setup.js"></script>
 	<script src="js/libz/videojs/plugins.js"></script>
+	<script src="js/libz/swfobject/swfobject.js"></script>
 
 	<script src="js/model/base.js"></script>
 	<script src="js/model/player.js"></script>

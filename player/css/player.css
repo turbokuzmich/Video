@@ -1756,6 +1756,14 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */.video-j
   opacity: 0;
   filter: alpha(opacity=0);
 }
+.ie8-player-container {
+  width: 960px;
+  height: 540px;
+  margin: 0 auto;
+}
+.hide {
+  display: none;
+}
 @media all and (device-width: 768px) and (device-height: 1024px) {
   html,
   body {

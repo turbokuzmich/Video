@@ -7,9 +7,11 @@
 
 @pullHeight: 166px;
 @topPanelUpTop: 130px;
+@playerWidth: 960px;
+@playerHeight: 540px;
 
 .wrap {
-	width: 960px; height: 540px;
+	width: @playerWidth; height: @playerHeight;
 	margin: 0 auto;
 	overflow: hidden;
 	.opacity(100);
@@ -18,6 +20,15 @@
 	&.pre-init {
 		.opacity(0);
 	}
+}
+
+.ie8-player-container {
+	width: @playerWidth; height: @playerHeight;
+	margin: 0 auto;
+}
+
+.hide {
+	display: none;
 }
 
 // ipad
