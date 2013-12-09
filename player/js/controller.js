@@ -4,9 +4,22 @@
 
 	if (ie8) {
 		player = {
+			'watched': null,
 			'isFullyWatched': function() {
-				return false;
+				return _.every(player.watched, function(is_watched) {
+					return !!is_watched;
+				});
 			}
+		};
+
+		window.setVideosQty = function(qty) {
+			player.watched = new Array(parseInt(qty));
+			for (var i = 0; i < qty; i++) {
+				player.watched[i] = false;
+			};
+		};
+		window.setWatched = function(index) {
+			player.watched[index] = true;
 		};
 
 		var flashvars = {}
