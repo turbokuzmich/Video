@@ -2,6 +2,129 @@
 
 	var player
 	,	videos = [{
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP1',
+			'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG1',
+				'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP2',
+			'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка',
+			'hide': true,
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG2',
+				'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP3',
+			'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка',
+			'hide': true,
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG3',
+				'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP4',
+			'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка',
+			'hide': true,
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG4',
+				'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP5',
+			'name': 'Кредитный риск'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP6',
+			'name': 'Модель LGD',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG6',
+				'name': 'Модель LGD'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP7',
+			'name': 'Стоимость под риском дефолта. Модель EAD'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP8',
+			'name': 'Рыночный риск',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG8',
+				'name': 'Рыночный риск'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP9',
+			'name': 'Надбавка за риск торговой книги',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG9',
+				'name': 'Надбавка за риск торговой книги'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP10',
+			'name': 'Операционный риск'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP11',
+			'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG11',
+				'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP12',
+			'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях',
+			'hide': true,
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG12',
+				'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP13',
+			'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях',
+			'hide': true,
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG13',
+				'name': 'Внешние и внутренние данные о потерях. Сбор данных о потерях'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP14',
+			'name': 'Прочие риски'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP15',
+			'name': 'Процессы. На примере корпоративного кредитного риска'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP16',
+			'name': 'Процессы. На примере корпоративного кредитного риска',
+			'hide': true
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP17',
+			'name': 'Активы, взвешенные с учетом риска',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG17',
+				'name': 'Активы, взвешенные с учетом риска'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP18',
+			'name': 'Расчет экономического капитала'
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP19',
+			'name': 'Стресс-тестирование',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG19',
+				'name': 'Стресс-тестирование'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP20',
+			'name': 'Аппетит к риску. Лимиты. Процесс стратегического и бизнес-планирования',
+			'misc': {
+				'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksG20',
+				'name': 'Аппетит к риску. Лимиты. Процесс стратегического и бизнес-планирования'
+			}
+		}, {
+			'path': 'https://sberbank-school.ru/video/synergy/risks/videos/mrisksP21',
+			'name': 'Заключительное слово'
+		}];
+
+	/*,	videos = [{
 			'path': 'video/mrisksP1',
 			'name': 'Предпосылки построения системы интегрированного управления рисками Сбербанка',
 			'misc': {
@@ -122,7 +245,7 @@
 		}, {
 			'path': 'video/mrisksP21',
 			'name': 'Заключительное слово'
-		}];
+		}];*/
 
 	if (ie8) {
 		player = {
